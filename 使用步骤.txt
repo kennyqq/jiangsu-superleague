@@ -1,0 +1,23 @@
+使用步骤
+解压文件
+
+解压 super-league-command-p2.zip 到任意目录
+安装 Node.js（如果未安装）
+
+https://nodejs.org/dist/v20.11.0/node-v20.11.0-x64.msi
+双击运行
+
+start.bat
+首次运行
+
+自动检测并安装依赖（约2-3分钟）
+完成后自动启动服务
+浏览器打开 http://localhost:3002
+📊 文件大小
+super-league-command-p2.zip: 1.23 MB
+解压后: ~4 MB (不含node_modules)
+首次运行后: ~210 MB (含node_modules)
+🖥️ 系统要求
+Windows 10/11 / macOS / Linux
+Node.js v18+
+Chrome/Edge/Firefox

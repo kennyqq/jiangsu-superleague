@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+/* 优设标题黑字体 */
+@font-face {
+  font-family: 'YouSheBiaoTiHei';
+  src: local('YouSheBiaoTiHei'),
+       local('优设标题黑'),
+       url('https://cdn.jsdelivr.net/npm/@chinese-fonts/ysbth@1.0.0/dist/%E4%BC%98%E8%AE%BE%E6%A0%87%E9%A2%98%E9%BB%91/result.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-cyber-bg: #0B0F19;
+  --color-cyber-panel: rgba(16, 24, 40, 0.6);
+  --color-cyber-cyan: #00F0FF;
+  --color-cyber-gold: #FFD700;
+  --color-cyber-red: #FF3333;
+  --color-cyber-blue: #1E90FF;
+  --font-orbitron: 'Orbitron', monospace;
+  --font-inter: 'Inter', sans-serif;
+  --font-youshe: 'YouSheBiaoTiHei', 'Orbitron', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0B0F19;
+    color: #FFFFFF;
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  .lcd-number {
+    font-family: 'Orbitron', monospace;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  }
+
+  .glass-panel {
+    background: rgba(16, 24, 40, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #00F0FF 0%, #1E90FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-gold-text {
+    background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .title-gradient {
+    background: linear-gradient(180deg, #FFFFFF 0%, #00F0FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5));
+  }
+}
+
+@layer utilities {
+  .scrollbar-cyber::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-cyber::-webkit-scrollbar-track {
+    background: rgba(0, 240, 255, 0.05);
+  }
+
+  .scrollbar-cyber::-webkit-scrollbar-thumb {
+    background: rgba(0, 240, 255, 0.3);
+    border-radius: 2px;
+  }
+
+  .shadow-glow-cyan {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+  }
+
+  .shadow-glow-gold {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+
+  .progress-shimmer {
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.8) 0%, rgba(0, 240, 255, 0.8) 50%, rgba(255, 215, 0, 0.8) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
