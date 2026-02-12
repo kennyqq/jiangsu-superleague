@@ -17,14 +17,15 @@ function ResourceGrid() {
 
   return (
     <CyberBorder delay={0.1}>
-      <div className="glass-panel rounded-lg p-4">
+      <div>
+        {/* 二级标题 */}
         <div className="flex items-center gap-2 mb-4">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-cyber-cyan/20 to-cyber-cyan/5 flex items-center justify-center border border-cyber-cyan/30">
+          <div className="w-7 h-7 rounded-lg bg-cyber-cyan/20 flex items-center justify-center border border-cyber-cyan/30">
             <Cpu className="w-4 h-4 text-cyber-cyan" />
           </div>
           <div>
-            <h3 className="text-white font-bold text-sm">5G-A 资源与韧性</h3>
-            <p className="text-white/40 text-[10px]">基础设施与韧性保障</p>
+            <h3 className="header-secondary">5G-A 资源与韧性</h3>
+            <p className="decor-en">Infrastructure & Resilience</p>
           </div>
         </div>
 
@@ -41,7 +42,7 @@ function ResourceGrid() {
                 <item.icon className="w-3 h-3" style={{ color: item.color }} />
                 <span className="text-white/50 text-[9px] truncate">{item.label}</span>
               </div>
-              <div className="font-orbitron text-lg font-bold leading-none" style={{ color: item.color }}>
+              <div className="number-metric text-lg leading-none">
                 {item.isStatus ? (
                   <span className="text-green-400">{item.value}</span>
                 ) : (
@@ -71,7 +72,7 @@ function ResourceGrid() {
   );
 }
 
-// Co-pilot 终端 - 黑客风格控制台
+// Co-pilot 终端 - 专业Linux终端风格
 function CoPilotTerminal() {
   const [logs, setLogs] = useState([
     { time: '19:42:01', type: 'info', content: '> [监控] 系统初始化完成' },
@@ -79,7 +80,6 @@ function CoPilotTerminal() {
   ]);
   const logsEndRef = useRef(null);
 
-  // 循环日志序列（全中文）
   const logSequences = [
     [
       { time: '19:42:03', type: 'warn', content: '> [监控] 小区04 PRB负载激增' },
@@ -115,8 +115,8 @@ function CoPilotTerminal() {
       if (logIndex < currentSequence.length) {
         setLogs(prev => {
           const newLogs = [...prev, currentSequence[logIndex]];
-          if (newLogs.length > 15) {
-            return newLogs.slice(newLogs.length - 15);
+          if (newLogs.length > 12) {
+            return newLogs.slice(newLogs.length - 12);
           }
           return newLogs;
         });
@@ -138,51 +138,55 @@ function CoPilotTerminal() {
 
   const getLogColor = (type) => {
     switch (type) {
-      case 'alert': return 'text-red-400';
-      case 'warn': return 'text-orange-400';
-      case 'ai': return 'text-cyber-cyan';
-      case 'success': return 'text-green-400';
-      default: return 'text-white/60';
+      case 'alert': return '#FF6B6B';
+      case 'warn': return '#FFA500';
+      case 'ai': return '#00F0FF';
+      case 'success': return '#00FF00';
+      default: return '#888888';
     }
   };
 
   return (
     <CyberBorder delay={0.2} className="flex-1 min-h-0">
-      <div className="h-full flex flex-col bg-black rounded-lg overflow-hidden border border-white/10">
+      {/* 固定高度300px，纯黑底色 */}
+      <div className="h-[300px] flex flex-col bg-black rounded-lg overflow-hidden border border-white/10">
         {/* Terminal Header */}
         <div className="flex items-center justify-between px-3 py-2 bg-cyber-cyan/10 border-b border-cyber-cyan/30 flex-shrink-0">
           <div className="flex items-center gap-2">
             <Terminal className="w-4 h-4 text-cyber-cyan" />
             <span className="text-cyber-cyan font-bold text-sm">智能运维终端</span>
-            <span className="text-white/40 text-xs">AI 韧性保障</span>
+            <span className="decor-en">AI Resilience Ops</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             <span className="text-green-400 text-xs">在线</span>
           </div>
         </div>
 
-        {/* Terminal Body */}
-        <div className="flex-1 p-3 overflow-y-auto font-mono text-[11px] leading-relaxed scrollbar-thin min-h-0">
+        {/* Terminal Body - 固定高度，内部滚动 */}
+        <div 
+          className="flex-1 p-3 overflow-hidden"
+          style={{ fontFamily: "'Courier New', monospace", fontSize: '12px', lineHeight: '1.6' }}
+        >
           <div className="space-y-1">
             {logs.map((log, idx) => (
               <motion.div
                 key={`${log.time}-${idx}`}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                className={getLogColor(log.type)}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                style={{ color: getLogColor(log.type) }}
               >
-                <span className="text-white/30 mr-2">{log.time}</span>
-                {log.content}
+                <span style={{ color: '#555' }}>{log.time}</span>
+                <span className="ml-2">{log.content}</span>
               </motion.div>
             ))}
             <motion.div
               animate={{ opacity: [0.3, 1, 0.3] }}
               transition={{ duration: 0.8, repeat: Infinity }}
-              className="text-cyber-cyan"
+              style={{ color: '#00F0FF' }}
             >
-              <span className="text-white/30 mr-2">_</span>
-              ▊
+              <span style={{ color: '#555' }}>_</span>
+              <span className="ml-2">▊</span>
             </motion.div>
             <div ref={logsEndRef} />
           </div>

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import LeftPanelP3 from './LeftPanelP3';
 import RightPanelP3 from './RightPanelP3';
 import BattleReportCard from './components/BattleReportCard';
-import PlaybackTimeline from './components/PlaybackTimeline';
+import TimelineUnified from '../../components/TimelineUnified';
 
 export default function EvaluationView() {
   return (
@@ -25,7 +25,7 @@ export default function EvaluationView() {
       />
 
       {/* 主布局 */}
-      <div className="flex-1 flex overflow-hidden p-4 gap-4">
+      <div className="flex-1 flex overflow-hidden pb-20">
         <LeftPanelP3 />
         
         {/* 中心舞台 - 战报卡片 */}
@@ -36,10 +36,12 @@ export default function EvaluationView() {
         <RightPanelP3 />
       </div>
 
-      {/* 底部回放时间轴 */}
-      <div className="h-24 px-4 pb-4">
-        <PlaybackTimeline />
-      </div>
+      {/* 统一全功能导航条 */}
+      <TimelineUnified 
+        onTimeChange={(time) => console.log('P3 Time:', time)}
+        onMetricChange={(metric) => console.log('P3 Metric:', metric)}
+        onDateChange={(date) => console.log('P3 Date:', date)}
+      />
     </div>
   );
 }

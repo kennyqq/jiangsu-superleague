@@ -9,8 +9,10 @@ export default function RightPanelP2() {
       {/* 面板标题 */}
       <div className="flex items-center gap-2 px-2">
         <div className="w-1 h-6 bg-cyber-cyan rounded-full" />
-        <h2 className="text-white font-bold text-lg">体验与运维保障</h2>
-        <div className="flex-1 h-px bg-gradient-to-r from-cyber-cyan/50 to-transparent ml-2" />
+        <div>
+          <h2 className="header-secondary">体验与运维保障</h2>
+          <p className="decor-en">Experience & Operations</p>
+        </div>
       </div>
 
       {/* 模块1: 分层分级体验 - 雷达图(图例右上角) */}

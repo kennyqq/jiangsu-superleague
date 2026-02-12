@@ -33,8 +33,10 @@ export default function LeftPanelP3() {
       {/* 面板标题 */}
       <div className="flex items-center gap-2 px-2">
         <div className="w-1 h-6 bg-yellow-500 rounded-full" />
-        <h2 className="text-white font-bold text-lg">经营变现与赛后关怀</h2>
-        <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/50 to-transparent ml-2" />
+        <div>
+          <h2 className="header-secondary" style={{ color: '#FFD700' }}>经营变现与赛后关怀</h2>
+          <p className="decor-en">Post-Match Care & Analytics</p>
+        </div>
       </div>
 
       {/* 模块1: 核心价值用户 - 2x2 网格 */}

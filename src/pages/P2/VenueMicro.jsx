@@ -1,19 +1,10 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import LeftPanelP2 from './LeftPanelP2';
 import RightPanelP2 from './RightPanelP2';
 import CenterStage from './components/CenterStage';
-import TimeSlider from '../P1/TimeSlider';
+import TimelineUnified from '../../components/TimelineUnified';
 
 export default function VenueMicro() {
-  const [currentTime, setCurrentTime] = useState('20:00');
-  const [timeIndex, setTimeIndex] = useState(8);
-
-  const handleTimeChange = (time, index) => {
-    setCurrentTime(time);
-    setTimeIndex(index);
-  };
-
   return (
     <div className="w-full h-full flex flex-col overflow-hidden">
       {/* 背景效果 */}
@@ -27,7 +18,7 @@ export default function VenueMicro() {
       </div>
 
       {/* 主内容区 */}
-      <div className="relative z-10 flex flex-col h-full">
+      <div className="relative z-10 flex flex-col h-full pb-20">
         {/* 中部内容区 */}
         <div className="flex-1 flex overflow-hidden">
           {/* 左侧 - 商业变现洞察 */}
@@ -53,20 +44,18 @@ export default function VenueMicro() {
               >
                 "网业协同，体验变现"
               </motion.div>
-              <div className="text-white/40 text-xs mt-1 tracking-widest">
-                Network-Business Synergy, Experience Monetization
-              </div>
+              <div className="decor-en">Network-Business Synergy</div>
             </div>
 
             {/* 地图容器 */}
-            <div className="flex-1 relative mx-3 mb-2 rounded-2xl overflow-hidden border border-cyber-gold/30" 
+            <div className="flex-1 relative mx-3 rounded-2xl overflow-hidden border border-cyber-gold/30 corner-bracket" 
               style={{ boxShadow: '0 0 50px rgba(255, 215, 0, 0.1), inset 0 0 100px rgba(255, 215, 0, 0.03)' }}
             >
               {/* 四角装饰 */}
-              <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-cyber-gold/60 z-10" />
-              <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-cyber-gold/60 z-10" />
-              <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-cyber-gold/60 z-10" />
-              <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-cyber-gold/60 z-10" />
+              <span className="absolute top-0 left-0 w-6 h-6 border-l border-t border-cyber-gold/60 z-10" />
+              <span className="absolute top-0 right-0 w-6 h-6 border-r border-t border-cyber-gold/60 z-10" />
+              <span className="absolute bottom-0 left-0 w-6 h-6 border-l border-b border-cyber-gold/60 z-10" />
+              <span className="absolute bottom-0 right-0 w-6 h-6 border-r border-b border-cyber-gold/60 z-10" />
               
               {/* 中心舞台 - 体育场内部视图 */}
               <CenterStage />
@@ -76,10 +65,14 @@ export default function VenueMicro() {
           {/* 右侧 - 体验与运维 */}
           <RightPanelP2 />
         </div>
-
-        {/* 底部时间轴 */}
-        <TimeSlider onTimeChange={handleTimeChange} currentTimeIndex={timeIndex} />
       </div>
+
+      {/* 统一全功能导航条 */}
+      <TimelineUnified 
+        onTimeChange={(time) => console.log('P2 Time:', time)}
+        onMetricChange={(metric) => console.log('P2 Metric:', metric)}
+        onDateChange={(date) => console.log('P2 Date:', date)}
+      />
     </div>
   );
 }

@@ -10,8 +10,10 @@ export default function RightPanelP3() {
       {/* 面板标题 */}
       <div className="flex items-center gap-2 px-2">
         <div className="w-1 h-6 bg-cyan-500 rounded-full" />
-        <h2 className="text-white font-bold text-lg">分层体验与智能体贡献</h2>
-        <div className="flex-1 h-px bg-gradient-to-r from-cyan-500/50 to-transparent ml-2" />
+        <div>
+          <h2 className="header-secondary">分层体验与智能体贡献</h2>
+          <p className="decor-en">VIP Experience & Agent Value</p>
+        </div>
       </div>
 
       {/* 模块1: VIP vs 普通用户对比 - 胶囊中心轴 */}

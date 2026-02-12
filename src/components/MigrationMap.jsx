@@ -281,67 +281,7 @@ export default function MigrationMap() {
         </motion.div>
       </div>
 
-      {/* 回放控制 - 固定在地图内部底部 */}
-      <motion.div 
-        initial={{ y: 30, opacity: 0 }} 
-        animate={{ y: 0, opacity: 1 }} 
-        transition={{ delay: 0.4 }} 
-        className="absolute bottom-0 left-0 right-0 z-30 px-3 pb-3"
-      >
-        <div className="glass-panel rounded-lg p-3 border border-cyber-cyan/30">
-          <div className="flex items-center gap-4">
-            {/* 播放控制按钮 */}
-            <div className="flex items-center gap-1 flex-shrink-0">
-              <button onClick={() => setCurrentTimeIndex(Math.max(0, currentTimeIndex - 1))} className="w-8 h-8 rounded bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                <SkipBack className="w-4 h-4 text-white" />
-              </button>
-              <button onClick={handlePlay} className="w-10 h-10 rounded bg-cyber-cyan/20 hover:bg-cyber-cyan/30 border border-cyber-cyan/50 flex items-center justify-center transition-colors">
-                {isPlaying ? <Pause className="w-5 h-5 text-cyber-cyan" /> : <Play className="w-5 h-5 text-cyber-cyan ml-0.5" />}
-              </button>
-              <button onClick={() => setCurrentTimeIndex(Math.min(timeSlots.length - 1, currentTimeIndex + 1))} className="w-8 h-8 rounded bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                <SkipForward className="w-4 h-4 text-white" />
-              </button>
-            </div>
-            
-            {/* 进度条区域 */}
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="text-white/60 text-xs font-medium">流向回放</span>
-                <span className="font-orbitron text-cyber-cyan text-base">{timeSlots[currentTimeIndex]}</span>
-              </div>
-              <div className="relative h-2 bg-white/10 rounded-full overflow-hidden">
-                {/* 进度填充 */}
-                <div 
-                  className="absolute inset-y-0 left-0 bg-gradient-to-r from-cyber-cyan to-cyber-gold rounded-full transition-all duration-300" 
-                  style={{ width: `${((currentTimeIndex + 1) / timeSlots.length) * 100}%` }} 
-                />
-                {/* 可点击区域 */}
-                <div className="absolute inset-0 flex">
-                  {timeSlots.map((_, index) => (
-                    <button 
-                      key={index} 
-                      onClick={() => setCurrentTimeIndex(index)} 
-                      className="flex-1 hover:bg-white/10 transition-colors"
-                    />
-                  ))}
-                </div>
-              </div>
-              {/* 时间刻度 */}
-              <div className="flex justify-between mt-1">
-                <span className="text-white/30 text-[10px]">08:00</span>
-                <span className="text-white/30 text-[10px]">10:00</span>
-                <span className="text-white/30 text-[10px]">12:00</span>
-              </div>
-            </div>
-            
-            {/* 粒度显示 */}
-            <div className="text-right flex-shrink-0 pl-4 border-l border-white/10">
-              <div className="text-white/40 text-[10px]">时间粒度</div>
-              <div className="text-white/80 text-sm font-medium">15分钟</div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
+      {/* 时间轴已移至页面底部统一组件 */}
     </div>
   );
 }

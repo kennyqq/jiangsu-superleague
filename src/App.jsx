@@ -5,6 +5,7 @@ import Header from './components/Header';
 import LeftPanel from './components/LeftPanel';
 import RightPanel from './components/RightPanel';
 import MigrationMap from './components/MigrationMap';
+import TimelineUnified from './components/TimelineUnified';
 import GlobalDefense from './pages/P1/GlobalDefense';
 import VenueMicro from './pages/P2/VenueMicro';
 import EvaluationView from './pages/P3/EvaluationView';
@@ -13,25 +14,35 @@ import EvaluationView from './pages/P3/EvaluationView';
 function MacroOriginView() {
   return (
     <div className="w-full h-full flex flex-col overflow-hidden">
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden pb-20">
         <LeftPanel />
         
-        {/* 中央地图区域 - 为底部回放条预留空间 */}
-        <div className="flex-1 flex flex-col relative py-2 pb-0">
-          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="text-center mb-1 flex-shrink-0">
+        {/* 中央地图区域 */}
+        <div className="flex-1 flex flex-col relative py-2">
+          <motion.div 
+            initial={{ y: -20, opacity: 0 }} 
+            animate={{ y: 0, opacity: 1 }} 
+            transition={{ delay: 0.3 }} 
+            className="text-center mb-1 flex-shrink-0"
+          >
             <div className="text-cyber-gold text-lg font-bold tracking-[0.3em]" style={{ textShadow: '0 0 20px rgba(255, 215, 0, 0.5)' }}>
               "一张网，火一座城"
             </div>
-            <div className="text-white/40 text-xs mt-0.5 tracking-wider">一场球赛，点燃一座城市的热情</div>
+            <div className="decor-en">One Network Ignites a City</div>
           </motion.div>
 
-          {/* 地图容器 - 留出底部空间给回放条 */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="flex-1 relative mx-2 mb-2 min-h-0">
-            <div className="absolute inset-0 rounded-xl overflow-visible border border-cyber-cyan/20" style={{ boxShadow: '0 0 40px rgba(0, 240, 255, 0.08)' }}>
-              <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-cyber-cyan/50" />
-              <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-cyber-cyan/50" />
-              <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-cyber-cyan/50" />
-              <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-cyber-cyan/50" />
+          {/* 地图容器 */}
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            transition={{ delay: 0.2 }} 
+            className="flex-1 relative mx-2 min-h-0"
+          >
+            <div className="absolute inset-0 rounded-xl overflow-visible border border-cyber-cyan/20 corner-bracket">
+              <span className="absolute top-0 left-0 w-5 h-5 border-l border-t border-cyber-cyan/50" />
+              <span className="absolute top-0 right-0 w-5 h-5 border-r border-t border-cyber-cyan/50" />
+              <span className="absolute bottom-0 left-0 w-5 h-5 border-l border-b border-cyber-cyan/50" />
+              <span className="absolute bottom-0 right-0 w-5 h-5 border-r border-b border-cyber-cyan/50" />
               <MigrationMap />
             </div>
           </motion.div>
@@ -39,6 +50,13 @@ function MacroOriginView() {
 
         <RightPanel />
       </div>
+      
+      {/* 统一全功能导航条 */}
+      <TimelineUnified 
+        onTimeChange={(time) => console.log('Time:', time)}
+        onMetricChange={(metric) => console.log('Metric:', metric)}
+        onDateChange={(date) => console.log('Date:', date)}
+      />
     </div>
   );
 }

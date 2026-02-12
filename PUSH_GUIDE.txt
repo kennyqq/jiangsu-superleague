@@ -1,0 +1,30 @@
+==========================================
+   推送到 GitHub 指南
+==========================================
+
+方法：双击运行 push-to-github.bat
+
+或者手动执行以下命令：
+
+1. 打开 CMD 或 PowerShell
+2. 进入项目目录:
+   cd D:\VScode\super-league-command
+
+3. 检查 Git 状态:
+   git status
+
+4. 添加所有更改:
+   git add .
+
+5. 提交更改:
+   git commit -m "Update unified timeline and UI"
+
+6. 推送到 GitHub:
+   git push origin main
+
+如果推送失败，尝试:
+   git push -f origin main
+
+==========================================
+仓库地址: https://github.com/kennyqq/jiangsu-superleague
+==========================================

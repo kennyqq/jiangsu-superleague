@@ -9,8 +9,10 @@ export default function LeftPanelP2() {
       {/* 面板标题 */}
       <div className="flex items-center gap-2 px-2">
         <div className="w-1 h-6 bg-cyber-gold rounded-full" />
-        <h2 className="text-white font-bold text-lg">商业变现洞察</h2>
-        <div className="flex-1 h-px bg-gradient-to-r from-cyber-gold/50 to-transparent ml-2" />
+        <div>
+          <h2 className="header-secondary text-cyber-gold">商业变现洞察</h2>
+          <p className="decor-en">Monetization Intelligence</p>
+        </div>
       </div>
 
       {/* 模块1: 用户分层结构 - 金字塔图 */}
